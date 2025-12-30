@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise for You</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="stillwithyou.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="scene-intro" class="scene active">
+        <h2>A little surprise for you...</h2>
+        <p>Before this year begins</p>
+        <div class="heart-btn-container">
+            <button id="hold-btn">❤</button>
+            <p>Tap and hold</p>
+        </div>
+    </div>
+
+    <div id="scene-cards" class="scene hidden">
+        <h3>Move the distractions aside...</h3>
+       <div class="card-stack">
+    <div class="card prize" id="final-card" onclick="showTicket()">
+        Click Me! 🎁
+    </div>
+
+    <div class="card distraction" style="z-index: 2" onclick="flyAway(this)">Overthinking 🧠</div>
+    <div class="card distraction" style="z-index: 3" onclick="flyAway(this)">Distance 📍</div>
+    <div class="card distraction" style="z-index: 4" onclick="flyAway(this)">Stress 😫</div>
+    <div class="card distraction" style="z-index: 5" onclick="flyAway(this)">Bad Days 🌧️</div>
+</div>
+    </div>
+
+    <div id="scene-ticket" class="scene hidden">
+        <div class="ticket">
+            <div class="ticket-content">
+                <h2>GOLDEN TICKET</h2>
+                <p>Valid for every day ahead</p>
+                <h3>"Unlimited Love & Smiles"</h3>
+                <button onclick="showGallery()">Claim Ticket ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="scene-gallery" class="scene hidden">
+        <h3>Some moments from this year</h3>
+        <div class="gallery-stack">
+            <img src="3.jpeg" alt="Us" class="photo-card" onclick="flyAway(this)">
+            <img src="4.jpeg" alt="Us" class="photo-card" onclick="flyAway(this)">
+            <img src="5.jpeg" alt="Us" class="photo-card" onclick="flyAway(this)">
+            <img src="6.jpeg" alt="Us" class="photo-card" onclick="flyAway(this)">
+            <img src="7.jpeg" alt="Us" class="photo-card" onclick="flyAway(this)">
+            </div>
+        <button onclick="showLetter()">Tap to continue</button>
+    </div>
+
+    <div id="scene-letter" class="scene hidden">
+        <div class="envelope" onclick="openLetter()">
+            <div class="front">
+                <h3>For my Cutiepie :)</h3>
+                <p>Tap to read</p>
+            </div>
+            <div class="letter-content">
+                <h3>Happy New Year 2026</h3>
+                <p>
+                    I hope this year brings you calm mornings, peaceful nights, 
+                    and little moments that make you smile. 
+                    No matter what happens, I'm always here for you.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+// Audio Control
+const music = document.getElementById('bg-music');
+
+// Scene Transitions
+function switchScene(currentId, nextId) {
+    document.getElementById(currentId).classList.remove('active');
+    document.getElementById(currentId).classList.add('hidden');
+    
+    document.getElementById(nextId).classList.remove('hidden');
+    document.getElementById(nextId).classList.add('active');
+}
+
+// 1. Hold Button Logic
+const holdBtn = document.getElementById('hold-btn');
+let holdTimer;
+
+holdBtn.addEventListener('mousedown', startHold);
+holdBtn.addEventListener('touchstart', startHold); // For mobile
+holdBtn.addEventListener('mouseup', endHold);
+holdBtn.addEventListener('touchend', endHold);
+
+function startHold() {
+    // Try to play music on first interaction
+    music.play().catch(e => console.log("User must interact first"));
+    
+    holdBtn.style.transform = "scale(1.2)";
+    // Hold for 2 seconds to trigger next scene
+    holdTimer = setTimeout(() => {
+        switchScene('scene-intro', 'scene-cards');
+    }, 1500); 
+}
+
+function endHold() {
+    clearTimeout(holdTimer);
+    holdBtn.style.transform = "scale(1)";
+}
+
+// 2. Card Swipe Logic
+function flyAway(card) {
+    card.classList.add('fly-away');
+    // After animation, remove from DOM to allow clicking the one below
+    setTimeout(() => {
+        card.style.display = 'none';
+    }, 500);
+}
+
+function showTicket() {
+    switchScene('scene-cards', 'scene-ticket');
+}
+
+function showGallery() {
+    switchScene('scene-ticket', 'scene-gallery');
+}
+
+function showLetter() {
+    switchScene('scene-gallery', 'scene-letter');
+}
+
+function openLetter() {
+    const envelope = document.querySelector('.envelope');
+    envelope.classList.add('open');
+}
